@@ -1,0 +1,16 @@
+# Author:  Eric Blue
+# URL:     http://eric-blue.com/projects/freemyzeo
+# Email:   ericblue76 (at) gmail (dot) com
+# Project: FreeMyZeo - Export MyZeo Sleep Data 
+
+[Overview]
+
+This service will allow MyZeo users to download a copy of their sleep data using the Perl port (WebService::Zeo) of the published Zeo API. 
+If you've already uploaded or synced your Zeo sleep data, you might be in luck! This is similar to the feature offered directly on the Zeo site, 
+however given the uncertain future of Zeo, it's useful to have another service that will remain up if Zeo's main website goes down. 
+This does obviously still rely on the Zeo API being available, but as of the last few days the main myzeo.com website was throwing server errors, 
+while the API service remained up.
+
+[Change Log]
+
+- 05/16/13 - Initial release
