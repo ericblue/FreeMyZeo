@@ -1,0 +1,302 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>FreeMyZeo - Export Your MyZeo Sleep Data</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="title" content="FreeMyZeo" />
+<meta name="description" content="Export Your MyZeo Sleep Data" />
+<meta name="keywords" content="quantified self zeo sleep data export" />
+<meta name="language" content="en" />
+<meta name="subject" content="Export Your MyZeo Sleep Data" />
+<meta name="robots" content="All" />
+<meta name="copyright" content="Eric Blue" />
+<meta name="abstract" content="Export Your MyZeo Sleep Data" />
+<meta name="MSSmartTagsPreventParsing" content="true" />
+<link id="theme" rel="stylesheet" type="text/css" href="css/style.css" title="theme" />
+<link id="datepicker" rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css"/>
+<link id="bs" rel="stylesheet" href="css/bootstrap.min.css" media="screen">
+<style>body {background: #d2d2d2;}</style>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+// http://tarruda.github.io/bootstrap-datetimepicker/
+<script src="js/bootstrap-datetimepicker.min.js"></script>
+<script>
+ $(document).ready(function(){
+	 
+	var start_date = new Date();
+	var end_date = new Date();
+	start_date.setDate(end_date.getDate() - 30);
+	 
+	var sy = start_date.getFullYear();
+	var sm = start_date.getMonth() + 1;
+	var sd = start_date.getDate();
+		  
+	 $('#start_date_value').val(sy + '-' + (sm<=9 ? '0' + sm : sm) + '-' + sd);
+	 
+	 $('#start_date').datetimepicker({
+	        format: 'yyyy-MM-dd',
+	        pickTime: false 
+	      });
+	 
+	var ey = end_date.getFullYear();
+	var em = end_date.getMonth() + 1;
+	var ed = end_date.getDate();
+			  
+	 
+	$('#end_date_value').val(ey + '-' + (em<=9 ? '0' + em : em) + '-' + ed);
+	 
+	 $('#end_date').datetimepicker({
+	        format: 'yyyy-MM-dd',
+	        pickTime: false 
+	      });
+	 
+	 
+	 $('#contact-form').validate(
+	 {
+	  rules: {
+	    username: {
+	      email: true,
+	      required: true
+	    },
+	    password: {
+	      minlength: 4,
+	      required: true
+	    }
+	  },
+	  highlight: function(element) {
+	    $(element).closest('.control-group').removeClass('success').addClass('error');
+	  },
+	  success: function(element) {
+	    element
+	    .text('OK!').addClass('valid')
+	    .closest('.control-group').removeClass('error').addClass('success');
+	  },
+	  submitHandler: function(form) {
+		  
+		  // Serialize isn't including date ranges? add manually
+		  //var data= $(form).serialize();
+		  var data = 'username=' + $('#username').val() + '&';
+		  data += 'password=' + $('#password').val() + '&';
+		  data += 'start_date=' + $('#start_date_value').val() + '&';
+		  data += 'end_date=' + $('#end_date_value').val();
+		  
+		  $('#failure').hide();
+		  
+		  $.ajax({
+		        type: "POST",
+		        url: "/freemyzeo/export/",
+		        data: data,
+		        beforeSend: function() {
+		            $('#loader').show();
+		         },
+		         complete: function(){
+		             $('#loader').hide();
+		          },
+		        success: function(data){
+		        	// A valid JSON response includes a type [success,failure] and message (text)
+		        	// e.g. response.type and response.message
+		        	
+		            if (data.response.type.indexOf('success')>=0) {
+		            	$(form).fadeOut(1000);
+   		            	var link = '<a href="' + data.response.csv_file + '">Download here</a>';
+   		         		$('#success_message').html('Found ' + data.response.total_days + ' days of sleep data!  ');
+   		            	$('#success_message').append('Your file can be: ' + link + '<p>');
+   		            	$('#success_message').append('The file will be available for up to 48 hours then will be deleted');
+   		            	$('#success').show();
+		            
+		            	//$('#success_message').html('Message = ' + data.response.debug_message);
+		            	//$('#success').show();
+		            } else if (data.response.type.indexOf('failure')>=0) {
+		            	//alert(JSON.stringify(data.response));
+		            	$('#failure_message').html('Message = ' + data.response.message);
+		            	$('#failure').show();
+		            } else {
+		            	$('#failure_message').html('Message = An unknown error has occured');
+				        $('#failure').show();
+		            }
+		        },
+		        error: function(xhr, ajaxOptions, thrownError){
+		        	$('#failure_message').html(thrownError);
+		        	$('#failure').show().fadeOut(5000);
+		        }
+		        });
+		  
+		  return false;
+		  
+		  
+		 }
+	 });
+	}); // end document.ready
+ </script>
+</head>
+<body>
+ <!-- top wrapper -->
+ <div id="topWrapper">
+  <div id="topBanner"></div>
+ </div>
+ <div id="topnav">
+  <ul>
+   <li id="current" style="border: none"><a href="#" shape="rect">Home</a></li>
+   <li style="border: none"><a href="https://github.com/ericblue/FreeMyZeo" shape="rect">GitHub Source</a></li>
+   <li style="border: none"><a href="http://eric-blue.com/contact/" shape="rect">Contact</a></li>
+  </ul>
+ </div>
+ <!-- end top wrapper -->
+ <div id="wrapper">
+  <div id="bg">
+   <div id="header"></div>
+   <div id="page">
+    <!-- begin container -->
+    <div id="container">
+     <!--  content -->
+     <div id="content">
+      <div id="center">
+       <div id="welcome">
+        <h3>ABOUT</h3>
+        <p>
+        This service will allow <a target="newwin" href="http://myzeo.com">MyZeo</a> users to download a copy of their sleep data using the 
+        Perl port (<a href="https://github.com/ericblue/Perl-Zeo-API">WebService::Zeo</a>) of the published <a href="http://mysleep.myzeo.com/api/api.shtml">Zeo API</a>.  If you've already uploaded or synced
+        your Zeo sleep data, you might be in luck!  This is similar to the feature offered directly on the Zeo site, however given the <a href="http://www.wired.com/business/2013/03/lights-out-for-zeo/">uncertain future of Zeo</a>, it's useful
+        to have another service that will remain up if Zeo's main website goes down.  This does obviously still rely on the Zeo API being available, but as of the last few days
+        the main myzeo.com website was throwing server errors, while the API service remained up. 
+        </p>
+        
+        <H4>WHAT DO YOU GET?</H4>
+        <ul>
+        <li>All high-level sleep record data (For most of the fields see the <a href="http://mysleep.myzeo.com/export/Export%20Data%20Help%20Sheet.pdf">official Zeo PDF)</a></li>
+        <li>Detailed sleep state data (REM,DEEP,LIGHT, etc) is available at 5 minute intervals</li>
+        <li>All data is formatted in CSV - Check out this <a href="/freemyzeo/export/sample.csv">example</a></li>
+        </ul>
+        
+        <H4>LIMITATIONS</H4>
+        <ul>
+        <li>Exports sleep record data only - no journal data yet</li>
+        <li>Doesn't contain 1 minute interval sleep state data(not sure if this is even available via the API)</li>
+        <li>This hasn't been thoroughly tested downloading bulk data from multiple users - MyZeo may rate limit API requests</li>
+        </ul>
+
+        <p style="clear: both" />
+
+        <h3>DOWNLOAD</h3>
+        <p>
+         <form action="" id="contact-form" class="form-horizontal">
+          <fieldset>
+           <div class="control-group">
+            <label class="control-label" for="name">Username /
+             Email</label>
+            <div class="controls">
+             <input type="text" class="input-large" name="username" id="username">
+            </div>
+           </div>
+           <div class="control-group">
+            <label class="control-label" for="password">Password</label>
+            <div class="controls">
+             <input type="password" class="input-large" name="password" id="password">
+            </div>
+           </div>
+           <div class="control-group">
+            <label class="control-label" for="start_date">Start Date</label>
+            <div class="controls">
+             <div id="start_date" class="input-append date">
+              <input id="start_date_value" type="text" value="" readonly></input> <span
+               class="add-on"> <i data-time-icon="icon-time"
+               data-date-icon="icon-calendar"></i>
+              </span>
+             </div>
+            </div>
+           </div>
+           <div class="control-group">
+            <label class="control-label" for="end_date">End Date</label>
+            <div class="controls">
+             <div id="end_date" class="input-append date">
+              <input id="end_date_value" type="text" readonly></input> <span
+               class="add-on"> <i data-time-icon="icon-time"
+               data-date-icon="icon-calendar"></i>
+              </span>
+             </div>
+            </div>
+           </div>
+           <div class="form-actions">
+  
+            <button type="submit" class="btn btn-medium">Download Data</button>            
+           </div>
+          </fieldset>
+         </form>
+         
+         <div id='messages'>
+          <div id='loader' style='display:none;'><img src="img/blue_spinner.gif"/> Downloading data, please wait...</div>
+          <div id='success' style='display:none;' class="alert alert-success">
+             <strong>Success</strong> 
+             <div id='success_message'></div>
+          </div>
+           <div id='failure' style='display:none;' class="alert alert-failure"><a class="close" data-dismiss="alert">×</a>
+             <strong>Error</strong>
+              <div id='failure_message'></div>
+          </div>
+          </div>
+         
+         <div id="results"></div>
+         
+         <b>Note</b>: Your credentials will not be saved!  The only reason a username and password is required is due to the original Perl MyZeo API using Basic Auth,
+         instead of OAuth.  Once the download is complete, your session ends and the API requests that are needed for downloading data will discard the login info.
+
+        </p>
+
+        <p style="clear: both" />
+        
+        <p style="clear: both" />
+
+        <h3>WHY DO THIS?</h3>
+        <p>
+        I love data, and all things <a href="http://quantifiedself.com">Quantified Self</a>!  I firmly believe if you own a fitness, health or any personal recording device
+        and you generate the data you should be able to own it, and get access to it easily.  So, for the past few years I've developed a number of projects to help developers and 
+        everyday users 'free their data'.  If you're interested in other efforts like this one, check out:
+        
+        <ul>
+        <li><a href="http://eric-blue.com/projects/fitbit/">Fitbit Hacks</a> - the original "unofficial" Fitbit API</li>
+        <li><a href="http://eric-blue.com/projects/zeo/">Webservice::Zeo</a> (Perl Zeo API)</li>
+        <li><a href="http://eric-blue.com/projects/neurosky">Neurosky Brainwave Visualizer</a> - visualize EEG data in real-time</li>
+        <li><a href="http://eric-blue.com/projects/mindstream">Mindstream</a> - Download and stream EEG data from Neurosky and other devices</li>
+        <li><a href="http://eric-blue.com/2011/11/28/jawbone-up-api-discovery/">Jawbone UP API</a> - "Unofficial" Jawbone UP API Discovery</li>
+        <li><a href="http://traqs.me">TRAQS.me</a> - Quantified Self aggregator and tracking service supporting many devices (currently in Beta)</li>
+        </ul>
+        
+        </p>
+
+       </div>
+      </div>
+      <div id="right">
+       <div id="sidebar">
+        <h3>Links</h3>
+        <ul class="vmenu">
+         <li><a href="http://myzeo.com" shape="rect">MyZeo.com</a></li>
+         <li><a href="http://quantifiedself.com" shape="rect">Quantifiedself.com</a></li>
+         <li><a href="http://eric-blue.com/category/quantified-self/" shape="rect">My Quantified Self articles</a></li>
+         <li><a href="https://forum.quantifiedself.com/thread-zeo-shutting-down-export-your-data">QS Thread on Zeo shutdown and how to export data<a></li>
+        </ul>
+       </div>
+      </div>
+      <div class="clear" style="height: 40px"></div>
+     </div>
+     <!-- end content -->
+    </div>
+    <!-- end container -->
+   </div>
+   <div id="footerWrapper">
+    <div id="footer">
+     <p style="padding-top: 10px">
+      <!-- 
+DO NOT REMOVE OR MODIFY THE FOOTER LINK BELOW.
+If you want to remove this link please make a 10 dollars donation at www.dotemplate.com
+-->
+      <a href="http://www.dotemplate.com" shape="rect">Templates</a> maker
+      <p> Copyright ©2013, Eric T. Blue. All rights reserved.</p>
+     </p>
+    </div>
+   </div>
+  </div>
+ </div>
+</body>
+</html>

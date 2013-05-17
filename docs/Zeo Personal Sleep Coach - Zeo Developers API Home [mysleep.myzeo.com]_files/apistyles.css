@@ -1,0 +1,892 @@
+
+
+	/* remember to define focus styles! */
+	:focus {
+		outline: 0;
+	}
+	.mbox-body ol, .mbox-body ul {
+		list-style: none;
+	}
+	/* tables still need 'cellspacing="0"' in the markup */
+	.mbox-body table {
+		border-collapse: separate;
+		border-spacing:10px 8px;
+	}
+	.mbox-body caption, .mbox-body th, .mbox-body td {
+		text-align: left;
+		font-weight: normal;
+		padding: 5;
+		cell-padding: 5;
+	}
+	.mbox-body blockquote:before, .mbox-body blockquote:after,
+	.mbox-body q:before, .mbox-body q:after {
+		content: "";
+	}
+	.mbox-body blockquote, .mbox-body q {
+		quotes: "" "";
+	}
+
+/* Containers */
+
+	body {
+		margin:0; 
+		padding:0;
+		background: #141414 url(http://images.myzeo.com/2010/03/homepages/3/global_bg_glow.jpg) top center no-repeat !important; 
+		font-family: Helvetica, Arial, sans-serif;
+	}
+	.mbox-body {
+		line-height:1.4em;
+	}
+	
+	#header, #container, #footer, .b-home #promos, .b-home #reviews {
+		width:960px;
+		margin:0 auto;	
+	}
+	
+	#container {
+		clear:both;
+		background: #fff url(http://images.myzeo.com/2010/03/homepages/3/global_container-top.png) top no-repeat;
+		padding-top:36px;
+	}
+	
+	#content {
+		padding:0;
+		margin:0;
+		overflow: none;
+		background: transparent url(http://images.myzeo.com/2010/03/homepages/3/global_container-bottom.png) bottom no-repeat;
+	}
+	* html #content {display:inline;} /* IE6 double-margin fix */
+	.b-testimonials #content, .b-whatiszeo #content, .b-whatsyourzq #content {
+		padding-bottom: 55px;
+	}
+	#top {
+		padding:0 45px;
+	}
+	
+	#maincol {
+		float:left;
+		width:490px;
+		margin-left: 60px;
+		display:inline;
+	}
+	
+	#sidecol {
+		float:right;
+		width:327px;
+		margin-right:60px;
+		display:inline;
+	}
+	
+	#bottom {
+		clear:both;
+		margin-top:40px;
+		padding-bottom:20px;
+		background: #fff url(http://images.myzeo.com/2010/03/homepages/2/global_bg_bottom_white.gif) bottom no-repeat;
+	}
+	* html #bottom {
+		display:block;
+	}
+	
+	.b-home #learn-more { 
+		margin:10px 0 -20px;
+		position:relative;
+		z-index: 100;
+		text-align: center;
+	}
+	
+	.b-home #promos {
+		clear:both;
+		width:960px;
+		height:198px;
+		margin-top:12px;
+		padding-left: 22px;
+		padding-top:26px;
+		overflow: auto;
+		background: url(http://images.myzeo.com/2010/03/homepages/3/home_promos_bg.png) no-repeat;
+	}
+	
+	#hero-images a {
+		display: none;
+	}
+	#hero-images a.first, #hero-images img { 
+		display: block 
+	}
+	#hero-controller {
+		width:60px;
+		height:10px;
+		margin:10px auto 15px;
+		overflow: hidden;
+	}
+	#hero-controller a {
+		text-indent: -10000px;
+		float:left;
+		margin:0 5px;
+		width:9px;
+		height:10px;
+		background: url(http://images.myzeo.com/2010/03/homepages/3/home_hero_toggle.png) 0 -10px no-repeat;
+	}
+	#hero-controller a.activeSlide {
+		background-position: 0 0;
+	}
+	
+	/* Removed from test
+
+	#infokit {
+		background: #f2f2f2 url(http://whatiszeo3.myzeo.com/_img/global_bg_bottom.gif) bottom no-repeat;
+		padding:30px 30px 40px;
+		text-align:center;
+		border-top:1px solid #ddd;
+	}
+	
+	#infokit-download {
+		background-color: #F3FCE5;
+		border: 1px solid #C5EA75;
+		-webkit-border-radius: 8px;
+		-moz-border-radius: 8px;
+		border-radius: 8px;
+		width:800px;
+		margin:0 auto;
+		padding:20px;
+	}
+	#infokit #infokit-download h4 {
+		color:#000;
+		font-weight:bold;
+		margin:6px 0 8px;
+	}
+	#infokit #infokit-download p {
+		margin-bottom:12px;
+	}
+
+	*/
+	
+/* Nav */
+
+	ul#nav {
+		list-style-type: none;
+		float:right;
+	}
+		ul#nav li {
+			float:left;
+		}
+	
+		ul#nav li a {
+			display:block;
+			height:87px;
+			text-indent:-10000px;
+			background-repeat:no-repeat;
+			background-position: 0 0;
+		}
+	
+		li#n-home a {
+			width:100px;
+			background-image:url(http://images.myzeo.com/2010/03/homepages/3/nav_home.gif);
+		}
+		li#n-whatiszeo a {
+			width:150px;
+			background-image:url(http://images.myzeo.com/2010/03/homepages/3/nav_whatiszeo.gif);
+		}
+		li#n-testimonials a {
+			width:223px;
+			background-image:url(http://images.myzeo.com/2010/03/homepages/3/nav_testimonials.gif);
+		}
+		li#n-myzeo a {
+			width:104px;
+			background-image:url(http://images.myzeo.com/2010/03/homepages/3/nav_myzeo.gif);
+		}
+		li#n-support a {
+			width:109px;
+			background-image:url(http://images.myzeo.com/2010/03/homepages/3/nav_support.gif);
+		}
+		li#n-order a {
+			width:129px;
+			background-image:url(http://images.myzeo.com/2010/03/homepages/3/nav_buy.gif);
+		}
+/*
+			.mbox-body.b-home li#n-order a { /* don't display button on home page */ /*
+				background-image:url(http://whatiszeo3.myzeo.com/_img/nav_order_home.gif);
+			}
+*/
+		.mbox-body ul#nav li a:hover {
+			background-position: 0 -87px;
+		}
+		.mbox-body.b-home li#n-home a,
+		.mbox-body.b-whatiszeo li#n-whatiszeo a,
+		.mbox-body.b-testimonials li#n-testimonials a,
+		.mbox-body.b-home li#n-home a:hover,
+		.mbox-body.b-whatiszeo li#n-whatiszeo a:hover,
+		.mbox-body.b-testimonials li#n-testimonials a:hover {
+			background-position: 0 -174px;
+			cursor:default;
+		}
+		.mbox-body.b-home li#n-order a:active, 
+		.mbox-body.b-whatiszeo li#n-order a:active, 
+		.mbox-body.b-testimonials li#n-order a:active { /* show depressed button on click */
+			background-position: 0 -174px;
+		}
+
+
+/* Image replacements */
+
+	h1 a {
+		float:left;
+		width:116px;
+		height:83px;
+		text-indent:-10000px;
+		background:url(http://images.myzeo.com/2010/03/homepages/3/global_zeo_logo.gif) no-repeat;
+	}
+	
+	.mbox-body.b-home h1 a {
+		cursor:default;
+	}
+
+	.b-home #how-it-works {
+		text-indent:-10000px;
+		width:960px;
+		height:323px;
+		background:url(http://images.myzeo.com/2010/03/homepages/3/home_how-it-works.jpg) no-repeat;
+	}
+
+	h2#page-title {
+		width:960px;
+		height:56px;
+		text-indent:-10000px;
+		margin-bottom:25px;
+	}
+		.mbox-body.b-whatiszeo h2#page-title {
+			background:url(http://images.myzeo.com/2010/03/homepages/3/whatiszeo_headline.png) 0 0 no-repeat;
+		}
+		.mbox-body.b-testimonials h2#page-title {
+			background:url(http://images.myzeo.com/2010/03/homepages/3/testimonials_headline.png) 0 0 no-repeat;
+		}
+		.mbox-body.b-whatsyourzq h2#page-title {
+			background:url(http://images.myzeo.com/2010/06/whats-your-zq/whats-your-zq_headline.png) 0 0 no-repeat;
+		}
+	
+	/* Buttons */
+	
+	a.button {
+		display:block;
+		float:left;
+		text-indent:-10000px;
+		background-position:0 0;
+		background-repeat:no-repeat;
+		margin-left:58px;
+	}
+	a.button#btn-order {
+		width:330px;
+		height:43px;
+		background-image:url(http://images.myzeo.com/2010/03/homepages/2/home_button_order_wide.gif);
+	}
+	a.button#btn-infokit {
+		width:194px;
+		height:43px;
+		background-image:url(http://whatiszeo3.myzeo.com/_img/home_button_infokit.gif);
+	}
+	a.button:hover {
+		background-position:0 -43px;
+	}
+	
+	#bottom-order a {
+		display:block;
+		width:847px;
+		height:112px;
+		margin:0 auto 32px;
+		text-indent:-10000px;
+		background:url(http://whatiszeo3.myzeo.com/_img/global_button_order_alt.gif) 0 0 no-repeat;
+	}
+		#bottom-order a:hover {
+			background-position:0 -112px;
+		}
+	
+	/* Side column callouts */
+	
+		#promos #quicktourswf, #promos #p-sandi, #promos a#p-guarantee {
+			margin-right:22px;
+		}
+		#promos #quicktourswf {
+			width:290px;
+			height:167px;
+			background-image:url(http://images.myzeo.com/2010/03/homepages/3/home_promo_tour.jpg);
+			margin-top:0;
+			float:left;
+		}		
+		#promos #p-sandi {
+			width:290px;
+			height:167px;
+			background-image:url(http://images.myzeo.com/2010/03/homepages/3/home_promo_sandi.jpg);
+			margin-top:0;
+			float:left;
+		}		
+		#promos a#p-guarantee {
+			text-indent:-10000px;
+			width:290px;
+			height:167px;
+			background-image:url(http://images.myzeo.com/2010/03/homepages/3/home_promo_guarantee.jpg);
+			margin-top:0;
+			float:left;
+		}		
+
+	.sidecol-callout a, .sidecol-callout#quicktourswf {
+		display:block;
+		width:327px;
+		margin:30px 0;
+		text-indent:-10000px;
+		background-position:0 0;
+		background-repeat: none;
+	}
+		a#c-sandi {
+			height:215px;
+			background-image:url(http://whatiszeo3.myzeo.com/_img/home_sidebar_sandi.gif);
+		}
+		a#c-chris {
+			height:216px;
+			background-image:url(http://whatiszeo3.myzeo.com/_img/home_sidebar_chris.gif);
+		}
+		#c-testimonials a {
+			height:44px;
+			background-image:url(http://whatiszeo3.myzeo.com/_img/home_sidebar_testimonials.gif);
+		}		
+		.sidecol-callout#quicktourswf {
+			height:90px;
+			background-image:url(http://whatiszeo3.myzeo.com/_img/home_sidebar_tour.gif);
+			margin-top:0;
+		}	
+		.sidecol-callout a:hover , .sidecol-callout#quicktourswf:hover {
+			background-position:-327px 0;
+		}
+		
+		/* What's Your ZQ page */
+		.b-whatsyourzq a#c-sandi {
+			height:236px;
+			background-image:url(http://images.myzeo.com/2010/06/whats-your-zq/sidebar-sandi.png);
+		}
+		.b-whatsyourzq a#c-james {
+			height:255px;
+			background-image:url(http://images.myzeo.com/2010/06/whats-your-zq/sidebar-james.png);
+		}
+		
+
+
+
+/* Reviews bar on home */
+
+	.b-home #reviews {
+		clear:both;
+		overflow:auto;
+		height:60px;
+		margin-bottom: -5px;
+	}
+
+	.b-home #reviews h2 {
+		float:left;
+		width:214px;
+		height:60px;
+		text-indent:-10000px;
+		background:url(http://images.myzeo.com/2010/03/homepages/3/home_reviews.gif) 0 0 no-repeat;
+	}
+	ul#review-bar {
+		list-style-type: none;
+		float:left;
+	}
+		ul#review-bar li {
+			float:left;
+		}
+	
+		ul#review-bar li a {
+			display:block;
+			height:60px;
+			text-indent:-10000px;
+			background-image:url(http://images.myzeo.com/2010/03/homepages/3/home_reviews.gif);
+			background-repeat:no-repeat;
+		}
+	
+		li#rev-todayshow a {
+			width:112px;
+			background-position: -214px 0;
+		}
+			li#rev-todayshow a:hover {
+				width:112px;
+				background-position: -214px -60px;
+			}
+		li#rev-wsj a {
+			width:234px;
+			background-position: -326px 0;
+		}
+			li#rev-wsj a:hover {
+				width:234px;
+				background-position: -326px -60px;
+			}
+		li#rev-nyt a {
+			width:225px;
+			background-position: -560px 0;
+		}
+			li#rev-nyt a:hover {
+				width:225px;
+				background-position: -560px -60px;
+			}
+		li#rev-usatoday a {
+			width:175px;
+			background-position: -785px 0;
+		}
+			li#rev-usatoday a:hover {
+				width:175px;
+				background-position: -785px -60px;
+			}
+
+	
+
+/* Font styles */	
+
+	#content p#intro {
+		font-size:21px;
+		line-height: 28px;
+		color:#999;
+		font-weight: normal;
+		padding:18px 0 20px;
+		border-top: 1px solid #e6e6e6;
+		border-bottom: 1px solid #e6e6e6;
+	}
+		#content p#intro strong {
+			font-weight: normal;
+			color:#333;
+		}
+	#content p {
+		font-size:14px;
+		color:#777;
+	}
+	#content #maincol p {
+		margin-bottom:30px;
+	}
+	#content #maincol h3 {
+		font-size:16px;
+		color:#333;
+		font-weight: normal;
+		margin:0 0 4px;
+	}
+	
+	#infokit h3 {
+		font-size:28px;
+		font-weight:bold;
+		color:#999;
+		margin:0 auto 15px;
+	}
+	#infokit h3 strong {
+		color:#333;
+	}
+	#infokit h4 {
+		font-size:24px;
+		font-weight:normal;
+		color:#999;
+		margin:0 auto 25px;
+	}
+	#footer {
+		color:#666;
+	}
+	
+	/* Links */
+	
+	#content a:link, #infokit a:link {color:#578ade;} 
+	#content a:hover, #infokit a:hover {color:#2c53ad; text-decoration: none;}
+	#content a:visited, #infokit a:visited {color:#9565ad;}
+	#content a:visited:hover, #infokit a:visited:hover {color:#5E4066;}
+
+/* Layout */
+
+	#breus-video {
+		float:left;
+		margin: -4px 25px 0 30px;
+	}
+	* html #breus-video {display:inline;} /* IE6 double-margin fix */
+
+	/* Home page call-to-action area */
+	
+	#call-to-action {
+		padding-top: 8px;
+	}
+	#call-to-action img {
+		float:left;
+	}
+	#call-to-action img#cta-offer {
+		margin:-8px 16px 10px 20px;
+	}
+	
+	#reviews {
+		clear:both;
+		float:left;
+		margin-top:10px;
+	}
+	
+	#when-you-order {
+		width:326px;
+		background: #808080 url(http://whatiszeo3.myzeo.com/_img/home_bg_when-you-order.gif) bottom no-repeat;
+	}
+	#when-you-order h3 {
+		padding:20px 25px 10px;
+		color:#fff;
+		font-size: 18px;
+		font-weight: bold;
+	} 
+	#when-you-order ul {
+		font-size: 14px;
+		padding:0 25px 25px 43px;
+		list-style-type: square;
+	}
+		#when-you-order ul li {
+			color: #ddd;
+			margin-bottom:4px;
+			line-height: 140%;
+		}
+
+	.mbox-body .review-row {
+		float:left;
+		padding-bottom: 50px;
+	}
+	.mbox-body .review-chunk {
+		width:250px;
+		float:left;
+		margin-left:32px;
+	}
+	* html .mbox-body .review-chunk {display:inline;}
+	.review-chunk p {
+		padding-bottom:30px;
+		margin-bottom: 0;
+	}
+	
+	.mbox-body .testimonial-chunk {
+		width:250px;
+		float:left;
+		margin-left:32px;
+	}
+	* html .mbox-body .testimonial-chunk {display:inline;}
+	.testimonial-chunk h3 {
+		font-size:18px;
+		font-weight: bold;
+		color: #333;
+	}
+	.mbox-body .testimonial-chunk h4 {
+		font-size:14px;
+		font-weight: bold;
+		color: #808080;
+		margin-bottom:6px;
+	}
+	.mbox-body .testimonial-chunk p {
+		margin:0 0 6px;
+	}
+	
+/* Form */
+
+	.mbox-body form {
+		text-align: left;
+		margin-left:350px;
+	}
+	.mbox-body label {
+		font-size:14px;
+		color:#666;
+		font-weight: bold;
+	}
+	.mbox-body .form-chunk {
+		display:block;
+		margin-bottom:10px;
+	}
+	.mbox-body form input.hidden-field {
+		display: none;
+	}
+	.mbox-body form input, .mbox-body form select {
+		display:block;
+		font-family:Arial, Helvetica, sans-serif;
+		font-size:16px;
+		padding:4px;
+		margin-bottom:6px;
+	}
+	.mbox-body form input.text-field, .mbox-body form select {
+		width:350px;
+	}
+	.mbox-body input#signup-button {
+		margin-left:-3px;
+	}
+	.mbox-body h4#error {
+		line-height:1.2;
+		color:#333;
+		width:326px;
+		font-weight:bold;
+		padding: 10px 16px;
+		border: 1px solid #fc0;
+		background-color: #ffffcc;
+		text-align: left;
+		margin:0 0 16px 430px;
+	}
+	.mbox-body p.error, .mbox-body label.error {
+		color: #cc0000;		
+		font-size:12px;
+		background: url('../_img/global_form_error-icon.gif') 0 2px no-repeat;
+		padding-left:22px;
+	}
+	.mbox-body label.error {
+		padding:4px 4px 8px 22px;
+	}
+	
+	/* Hide for now
+	input#signup-button {
+		width:241px;
+		height:43px;
+		text-indent:-10000px;
+		border:none;
+		cursor: pointer;
+		background:url(http://whatiszeo3.myzeo.com/_img/global_button_signup.gif) 0 0 no-repeat;
+	}
+		input#signup-button:hover {
+			background-position:0 -43px;
+		}
+	*/
+	
+	#videoModalContent {background-color: #000 !important;} /* color the modal container's border black to look good with the clickable SWF */
+
+/* What Is Zeo */
+	
+	.b-whatiszeo #hero, .b-whatsyourzq #hero  {
+		width:840px;
+		margin:-6px auto 30px;
+		padding:0 0 30px;
+		text-align:center;
+		border-bottom: 1px solid #eee;
+	}
+		.b-whatsyourzq #hero  {
+			width:890px;
+		}
+
+	.b-whatiszeo #hero img {
+		margin:0 0 10px -6px;
+	}
+	.b-whatiszeo #hero h3 {
+		font-size:23px;
+		line-height: 28px;
+		color: #000;
+		margin-bottom: 8px;
+		font-weight:normal;
+	}
+	.b-whatiszeo #hero p, .b-whatsyourzq #hero p {
+		font-size:20px;
+		line-height: 28px;
+		color: #999;
+		padding:0 40px;
+	}
+
+/* What's Your ZQ */
+
+	.b-whatsyourzq #content p.caption {
+		font-size:11px;
+		line-height: 14px;
+	}
+	.b-whatsyourzq #content .inset-images {
+		float:left; 
+		margin:0 20px 10px -10px;
+		width:221px;
+	}
+		.b-whatsyourzq #content .inset-images img {
+			display:block;
+		}
+		.b-whatsyourzq #content #maincol .inset-images p.caption {
+			margin:4px 0 6px 12px;
+		}
+
+
+	.b-whatsyourzq #content .sidebar {
+		background:url(http://images.myzeo.com/2010/06/whats-your-zq/sidebar-bg-bot.png) bottom left no-repeat;
+	}
+		.b-whatsyourzq #content .sidebar h3 {
+			text-align:left;
+			padding:27px 27px 6px;
+			font-size:14px;
+			font-weight:bold;
+			color:#777;
+			background:url(http://images.myzeo.com/2010/06/whats-your-zq/sidebar-bg-top.png) top left no-repeat;
+		}
+		.b-whatsyourzq #content .sidebar h3 strong {
+			color:#333;
+		}
+		.b-whatsyourzq #content .sidebar p {
+			text-align:left;
+			font-size:12px;
+			line-height: 18px;
+			padding:0 27px;
+			margin-bottom:12px;
+		}
+		.b-whatsyourzq #content .sidebar p.footnote {
+			color:#999;
+			font-size:10px;
+			line-height:12px;
+			padding:6px 27px 27px;
+		}
+
+/* myZeo for iPhone */
+
+	.b-myzeoforiphone #content {
+		padding-bottom: 55px;
+	}
+	.b-myzeoforiphone .singlecol {
+		padding:0 60px;
+	}
+	.mbox-body.b-myzeoforiphone h2#page-title {
+		background:url(http://images.myzeo.com/2010/06/myzeo-for-iphone/myzeo-for-iphone-headline.png) 0 0 no-repeat;
+	}
+	
+	/* Hero */
+	
+	.b-myzeoforiphone #hero {
+		width:840px;
+		margin:-20px auto 0;
+		padding:0;
+		text-align:center;
+	}
+	.b-myzeoforiphone #hero p {
+		font-size:22px;
+		line-height: 28px;
+		color: #999;
+		margin-bottom:16px;
+	}
+	.b-myzeoforiphone #hero img.button {
+		margin-bottom:6px;
+	}
+	
+	/* Features */
+	
+	.b-myzeoforiphone #features {
+		overflow: auto;
+		margin:8px 0 20px;
+	}
+	.b-myzeoforiphone #features h3 {
+		color:#f90;
+		font-size:18px;
+		margin:0 0 6px;
+	}
+	.b-myzeoforiphone #features p {
+		font-size:13px;
+		line-height:19px;
+	}
+	.b-myzeoforiphone .feature {
+		width:392px;
+		float:left;
+	}
+	.b-myzeoforiphone .feature#f-1, .b-myzeoforiphone .feature#f-2 {
+		margin-bottom:22px;
+	}
+	.b-myzeoforiphone .feature#f-1, .b-myzeoforiphone .feature#f-3 {
+		margin-right:56px;
+	}
+	.b-myzeoforiphone .feature#f-1 img {
+		float:right;
+		margin-left:20px;
+	}
+	.b-myzeoforiphone .feature#f-1 h3,
+	.b-myzeoforiphone .feature#f-2 h3 {
+		margin-top:85px;
+	} 
+	.b-myzeoforiphone .feature#f-2 h3, 
+	.b-myzeoforiphone .feature#f-2 p {
+		margin-left:6px;
+	}
+	.b-myzeoforiphone .feature#f-2 img {
+		margin-top:20px;
+	}
+	.b-myzeoforiphone .feature#f-3 {
+		clear:left;
+	}
+	.b-myzeoforiphone .feature#f-4 h3 {
+		margin-top:120px;
+	}
+	.b-myzeoforiphone .feature#f-4 img {
+		float:left;
+		margin-right:20px;
+	}
+	
+	/* Info */
+	
+	.b-myzeoforiphone #info {
+		line-height:19px;
+		overflow: auto;
+	}
+	.b-myzeoforiphone #info h4 {
+		font-size:13px;
+		font-weight:bold;
+		margin-bottom:6px;
+		color:#333;
+	}
+	.b-myzeoforiphone #info p {
+		font-size:13px;
+		margin-bottom:6px;
+	}
+		.b-myzeoforiphone #info p strong {
+			font-weight:bold;
+		}
+		.b-myzeoforiphone #info p.note {
+			font-size:11px;
+			line-height:16px;
+		}
+	.b-myzeoforiphone #info .four-col {
+		float:left;
+		width:190px;
+		margin-left:26px;
+	}
+	.b-myzeoforiphone #info .four-col.first {
+		margin-left:0;
+	}
+	
+	/* Legal */
+	
+	.b-myzeoforiphone #legal p {
+		font-size:10px;
+		line-height:14px;
+		margin-top:10px;
+		color:#a9a9a9;
+	}
+
+.code {
+	background-color:#CDCDCD;margin-top:4px;margin-bottom:4px;margin-left:10px;font-family:Courrier;padding:8px 8px 8px 8px;
+}
+
+.note {
+	background-color:#FFEEBB;margin-top:4px;margin-bottom:4px;margin-left:10px;font-family:Courrier;padding:8px 8px 8px 8px;
+}
+
+.mbox-body.parameters {
+	background-color:#DDFFBB;margin-top:4px;margin-bottom:4px;margin-left:10px;font-family:Courrier;padding:8px 8px 8px 8px;
+}
+
+.responseFields {
+	background-color:#DAE0ED;margin-top:4px;margin-bottom:4px;margin-left:10px;font-family:Courrier;padding:8px 8px 8px 8px;
+}
+
+.returncodes {
+	background-color:#FCF17F;margin-top:4px;margin-bottom:4px;margin-left:10px;font-family:Courrier;padding:8px 8px 8px 8px;
+}
+
+.defines {
+	background-color:#EEEEEE;margin-top:4px;margin-bottom:4px;margin-left:10px;font-family:Courrier;padding:8px 8px 8px 8px;
+}
+
+.defines_enum {
+	background-color:#DDEEEE;margin-top:4px;margin-bottom:4px;margin-left:10px;font-family:Courrier;padding:8px 8px 8px 8px;
+}
+
+.mbox-body.parameters table {
+	border-spacing:10px 8px;
+}
+.mbox-body.parameters td {
+	vertical-align: top;
+}
+
+.content_api h1 {
+	font-size:20px;
+	font-family: "trebuchet ms", "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-weight:bold;
+}
+.content_api h2 {
+	font-size:16px;
+	font-family: "trebuchet ms", "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-weight:bold;
+}
+.content_api h3 {
+	font-size:14px;
+	font-family: "trebuchet ms", "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-weight:bold;
+}

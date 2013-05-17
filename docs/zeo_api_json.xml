@@ -1,0 +1,425 @@
+<application xmlns="http://research.sun.com/wadl/2006/10" xmlns:xs="http://www.w3.org/2001/XMLSchema"><grammars><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified">
+<xs:element name="abstractFactorDescriptorList" type="abstractFactorDescriptorList"/>
+<xs:element name="apiResponse" type="apiResponse"/>
+<xs:element name="apiResponseList" type="apiResponseList"/>
+<xs:element name="response" nillable="true" type="xs:anyType"/>
+<xs:complexType name="apiResponseJournalDescriptor">
+<xs:complexContent>
+<xs:extension base="apiResponseList">
+<xs:sequence>
+<xs:element minOccurs="0" name="factors">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="factor" type="journalFactorDescriptor"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType abstract="true" name="apiResponseList">
+<xs:complexContent>
+<xs:extension base="apiResponse">
+<xs:sequence/>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="apiResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="errMsg" type="xs:string"/>
+<xs:element minOccurs="0" name="name" type="xs:string"/>
+<xs:element minOccurs="0" name="value" type="xs:string"/>
+</xs:sequence>
+<xs:attribute name="reqId" type="xs:long" use="required"/>
+<xs:attribute name="rspId" type="xs:long" use="required"/>
+<xs:attribute name="status" type="xs:int" use="required"/>
+<xs:attribute name="versionApi" type="zeoApiVersionType"/>
+<xs:attribute name="versionBuild" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="journalFactorDescriptor">
+<xs:complexContent>
+<xs:extension base="abstractFactorDescriptorList">
+<xs:sequence>
+<xs:element minOccurs="0" name="category" type="xs:string"/>
+<xs:element name="catid" type="xs:int"/>
+<xs:element name="custom" type="xs:boolean"/>
+<xs:element minOccurs="0" name="id" type="xs:string"/>
+<xs:element minOccurs="0" name="name" type="xs:string"/>
+<xs:element minOccurs="0" name="question" type="xs:string"/>
+<xs:element minOccurs="0" name="answers">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="answer" type="journalAnswerDescriptor"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType abstract="true" name="abstractFactorDescriptorList">
+<xs:sequence/>
+</xs:complexType>
+<xs:complexType name="journalAnswerDescriptor">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="subQuestionAnswers" nillable="true" type="journalAnswerDescriptor"/>
+<xs:element minOccurs="0" name="subQuestionText" type="xs:string"/>
+<xs:element minOccurs="0" name="text" type="xs:string"/>
+<xs:element name="value" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="apiResponseDateList">
+<xs:complexContent>
+<xs:extension base="apiResponseList">
+<xs:sequence>
+<xs:element minOccurs="0" name="dateList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="date" type="zeoDate"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="zeoDate">
+<xs:sequence>
+<xs:element name="day" type="xs:int"/>
+<xs:element name="month" type="xs:int"/>
+<xs:element name="year" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="apiResponseSleepRecordsMobile">
+<xs:complexContent>
+<xs:extension base="apiResponseList">
+<xs:sequence>
+<xs:element minOccurs="0" name="deletedSleepRecords">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="zeoSleepDataID" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="sleepRecords">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="sleepRecordMobile" type="sleepRecordMobile"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="sleepRecordMobile">
+<xs:complexContent>
+<xs:extension base="sleepStatsMobile">
+<xs:sequence>
+<xs:element minOccurs="0" name="ar" type="xs:int"/>
+<xs:element minOccurs="0" name="ai" type="xs:int"/>
+<xs:element minOccurs="0" name="bh" type="xs:string"/>
+<xs:element minOccurs="0" name="de" type="xs:boolean"/>
+<xs:element minOccurs="0" name="hi" type="xs:boolean"/>
+<xs:element minOccurs="0" name="dh" type="xs:string"/>
+<xs:element minOccurs="0" name="dt" type="xs:long"/>
+<xs:element minOccurs="0" name="we" type="xs:int"/>
+<xs:element minOccurs="0" name="ws" type="xs:boolean"/>
+<xs:element minOccurs="0" name="wi" type="xs:int"/>
+<xs:element minOccurs="0" name="id" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="sleepStatsMobile">
+<xs:sequence>
+<xs:element minOccurs="0" name="an" type="xs:int"/>
+<xs:element minOccurs="0" name="bt" type="xs:long"/>
+<xs:element minOccurs="0" name="rt" type="xs:long"/>
+<xs:element minOccurs="0" name="td" type="xs:int"/>
+<xs:element minOccurs="0" name="tl" type="xs:int"/>
+<xs:element minOccurs="0" name="tr" type="xs:int"/>
+<xs:element minOccurs="0" name="tw" type="xs:int"/>
+<xs:element minOccurs="0" name="tz" type="xs:int"/>
+<xs:element minOccurs="0" name="zt" type="xs:int"/>
+<xs:element minOccurs="0" name="zq" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="apiResponseSleep">
+<xs:complexContent>
+<xs:extension base="apiResponse">
+<xs:sequence/>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="apiResponseDataMgmtInfo">
+<xs:complexContent>
+<xs:extension base="apiResponseList">
+<xs:sequence>
+<xs:element minOccurs="0" name="dataMgmtInfoList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="dataMgmtInfo" type="dataMgmtInfo"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="dataMgmtInfo">
+<xs:sequence>
+<xs:element minOccurs="0" name="date" type="zeoDate"/>
+<xs:element name="hasJournalData" type="xs:boolean"/>
+<xs:element name="hasSleepData" type="xs:boolean"/>
+<xs:element minOccurs="0" name="zqScore" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="apiResponseJournalEntry">
+<xs:complexContent>
+<xs:extension base="apiResponseList">
+<xs:sequence>
+<xs:element minOccurs="0" name="date" type="xs:string"/>
+<xs:element name="energyLevel" type="xs:int"/>
+<xs:element name="focusLevel" type="xs:int"/>
+<xs:element name="mood" type="xs:int"/>
+<xs:element name="morningFeel" type="xs:int"/>
+<xs:element minOccurs="0" name="notes" type="xs:string"/>
+<xs:element minOccurs="0" name="factors">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="factor" type="journalFactor"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="journalFactor">
+<xs:sequence>
+<xs:element minOccurs="0" name="descriptorID" type="xs:string"/>
+<xs:element name="value" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="apiResponseSleepAndJournalData">
+<xs:complexContent>
+<xs:extension base="apiResponseList">
+<xs:sequence>
+<xs:element minOccurs="0" name="records">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="record" type="sleepAndJournalData"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="sleepAndJournalData">
+<xs:sequence>
+<xs:element minOccurs="0" name="date" type="zeoDate"/>
+<xs:element minOccurs="0" name="journalEntry" type="journalEntry"/>
+<xs:element minOccurs="0" name="sleepStats" type="sleepStats"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="journalEntry">
+<xs:sequence>
+<xs:element minOccurs="0" name="date" type="localDate"/>
+<xs:element name="energyLevel" type="xs:int"/>
+<xs:element minOccurs="0" name="answers">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="answer" type="journalFactor"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="focusLevel" type="xs:int"/>
+<xs:element name="id" type="xs:int"/>
+<xs:element name="mood" type="xs:int"/>
+<xs:element name="morningFeel" type="xs:int"/>
+<xs:element minOccurs="0" name="notes" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType final="extension restriction" name="localDate">
+<xs:complexContent>
+<xs:extension base="baseLocal">
+<xs:sequence/>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType abstract="true" name="baseLocal">
+<xs:complexContent>
+<xs:extension base="abstractPartial">
+<xs:sequence/>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType abstract="true" name="abstractPartial">
+<xs:sequence/>
+</xs:complexType>
+<xs:complexType name="sleepStats">
+<xs:sequence>
+<xs:element name="awakenings" type="xs:int"/>
+<xs:element name="awakeningsZqPoints" type="xs:int"/>
+<xs:element minOccurs="0" name="bedTime" type="zeoDateTime"/>
+<xs:element minOccurs="0" name="endDate" type="zeoDate"/>
+<xs:element minOccurs="0" name="grouping" type="sleepStatsGrouping"/>
+<xs:element name="morningFeel" type="xs:float"/>
+<xs:element minOccurs="0" name="riseTime" type="zeoDateTime"/>
+<xs:element minOccurs="0" name="startDate" type="zeoDate"/>
+<xs:element name="timeInDeep" type="xs:int"/>
+<xs:element name="timeInDeepPercentage" type="xs:int"/>
+<xs:element name="timeInDeepZqPoints" type="xs:int"/>
+<xs:element name="timeInLight" type="xs:int"/>
+<xs:element name="timeInLightPercentage" type="xs:int"/>
+<xs:element name="timeInRem" type="xs:int"/>
+<xs:element name="timeInRemPercentage" type="xs:int"/>
+<xs:element name="timeInRemZqPoints" type="xs:int"/>
+<xs:element name="timeInWake" type="xs:int"/>
+<xs:element name="timeInWakePercentage" type="xs:int"/>
+<xs:element name="timeInWakeZqPoints" type="xs:int"/>
+<xs:element name="timeToZ" type="xs:int"/>
+<xs:element name="totalZ" type="xs:int"/>
+<xs:element name="totalZZqPoints" type="xs:int"/>
+<xs:element name="zq" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="zeoDateTime">
+<xs:sequence>
+<xs:element name="day" type="xs:int"/>
+<xs:element name="hour" type="xs:int"/>
+<xs:element name="minute" type="xs:int"/>
+<xs:element name="month" type="xs:int"/>
+<xs:element name="second" type="xs:int"/>
+<xs:element name="year" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="apiResponseInteractiveUploadRecordInfo">
+<xs:complexContent>
+<xs:extension base="apiResponseList">
+<xs:sequence>
+<xs:element name="corrupt" type="xs:boolean"/>
+<xs:element minOccurs="0" name="interactiveUploadRecordInfoList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="interactiveUploadRecordInfo" type="interactiveUploadRecordInfo"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="interactiveUploadRecordInfo">
+<xs:sequence>
+<xs:element minOccurs="0" name="date" type="zeoDate"/>
+<xs:element name="insufficientData" type="xs:boolean"/>
+<xs:element name="zqScore" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="apiResponseSleepRecords">
+<xs:complexContent>
+<xs:extension base="apiResponseList">
+<xs:sequence>
+<xs:element minOccurs="0" name="sleepRecords">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="sleepRecord" type="sleepRecord"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="sleepRecord">
+<xs:complexContent>
+<xs:extension base="sleepStats">
+<xs:sequence>
+<xs:element minOccurs="0" name="alarmReason" type="alarmReason"/>
+<xs:element name="alarmRingIndex" type="xs:int"/>
+<xs:element name="dayFeel" type="xs:int"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="sleepGraph" nillable="true" type="sleepStage"/>
+<xs:element minOccurs="0" name="sleepGraphStartTime" type="zeoDateTime"/>
+<xs:element name="sleepStealerScore" type="xs:int"/>
+<xs:element name="wakeWindowEndIndex" type="xs:int"/>
+<xs:element name="wakeWindowShow" type="xs:boolean"/>
+<xs:element name="wakeWindowStartIndex" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="apiResponseSingleSleepRecord">
+<xs:complexContent>
+<xs:extension base="apiResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="sleepRecord" type="sleepRecord"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="apiResponseSingleSleepStats">
+<xs:complexContent>
+<xs:extension base="apiResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="sleepStats" type="sleepStats"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="apiResponseSleepStats">
+<xs:complexContent>
+<xs:extension base="apiResponseList">
+<xs:sequence>
+<xs:element minOccurs="0" name="sleepRecords">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="sleepRecord" type="sleepStats"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:simpleType name="zeoApiVersionType">
+<xs:restriction base="xs:string">
+<xs:enumeration value="v1"/>
+<xs:enumeration value="v2"/>
+<xs:enumeration value="v3"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="sleepStatsGrouping">
+<xs:restriction base="xs:string">
+<xs:enumeration value="COMBINED"/>
+<xs:enumeration value="DAILY"/>
+<xs:enumeration value="WEEKLY"/>
+<xs:enumeration value="MONTHLY"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="alarmReason">
+<xs:restriction base="xs:string">
+<xs:enumeration value="REM_TO_NON_REM_TRANSITION"/>
+<xs:enumeration value="NON_REM_TO_REM_TRANSITION"/>
+<xs:enumeration value="WAKE"/>
+<xs:enumeration value="DEEP_RISING"/>
+<xs:enumeration value="END_OF_WAKE_WINDOW"/>
+<xs:enumeration value="NO_ALARM"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="sleepStage">
+<xs:restriction base="xs:string">
+<xs:enumeration value="UNDEFINED"/>
+<xs:enumeration value="WAKE"/>
+<xs:enumeration value="REM"/>
+<xs:enumeration value="LIGHT"/>
+<xs:enumeration value="DEEP"/>
+<xs:enumeration value="NUMELEMENTS"/>
+<xs:enumeration value="LIGHTTODEEP"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:schema>
+</grammars><resources base="http://api.myzeo.com:8080/zeows/api/v1/json/"><resource path="/sleeperService"><resource path="/changeAccountPassword"><method name="GET"><request><param name="key" style="query" type="xs:string"/><param name="email" style="query" type="xs:string"/><param name="password" style="query" type="xs:string"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/completeInteractiveUpload"><method name="GET"><request><param name="key" style="query" type="xs:string"/><param name="dateList" style="query"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/deleteJournalData"><method name="GET"><request><param name="key" style="query" type="xs:string"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/deleteJournalDataForDates"><method name="GET"><request><param name="key" style="query" type="xs:string"/><param name="dateList" style="query"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/deleteQaAccount"><method name="GET"><request><param name="key" style="query" type="xs:string"/><param name="email" style="query" type="xs:string"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/deleteSleepData"><method name="GET"><request><param name="key" style="query" type="xs:string"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/deleteSleepDataForDates"><method name="GET"><request><param name="key" style="query" type="xs:string"/><param name="dateList" style="query"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/deleteSleepDataForIds"><method name="GET"><request><param name="key" style="query" type="xs:string"/><param name="id" style="query"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/getAccountId"><method name="GET"><request><param name="key" style="query" type="xs:string"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/getAllDailySleepStats"><method name="GET"><request><param name="key" style="query" type="xs:string"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/getAllDatesWithSleepData"><method name="GET"><request><param name="key" style="query" type="xs:string"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/getAllMonthlySleepStats"><method name="GET"><request><param name="key" style="query" type="xs:string"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/getAllWeeklySleepStats"><method name="GET"><request><param name="key" style="query" type="xs:string"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/getBulkSleepRecordsSinceDate"><method name="GET"><request><param name="key" style="query" type="xs:string"/><param name="userid" style="query" type="xs:string"/><param name="date" style="query" type="xs:string"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/getBulkSleepStatsSinceDate"><method name="GET"><request><param name="key" style="query" type="xs:string"/><param name="userid" style="query" type="xs:string"/><param name="date" style="query" type="xs:string"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/getDataMgmtInfo"><method name="GET"><request><param name="key" style="query" type="xs:string"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/getDatesWithSleepDataInRange"><method name="GET"><request><param name="key" style="query" type="xs:string"/><param name="dateFrom" style="query" type="xs:string"/><param name="dateTo" style="query" type="xs:string"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/getEarliestSleepRecord"><method name="GET"><request><param name="key" style="query" type="xs:string"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/getEarliestSleepStats"><method name="GET"><request><param name="key" style="query" type="xs:string"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/getJournalDescriptor"><method name="GET"><request><param name="key" style="query" type="xs:string"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/getJournalEntryForDate"><method name="GET"><request><param name="key" style="query" type="xs:string"/><param name="dateEntry" style="query" type="xs:string"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/getLastNightsZQ"><method name="GET"><request><param name="key" style="query" type="xs:string"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/getLatestSleepRecord"><method name="GET"><request><param name="key" style="query" type="xs:string"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/getLatestSleepStats"><method name="GET"><request><param name="key" style="query" type="xs:string"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/getNextSleepRecord"><method name="GET"><request><param name="key" style="query" type="xs:string"/><param name="date" style="query" type="xs:string"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/getNextSleepStats"><method name="GET"><request><param name="key" style="query" type="xs:string"/><param name="date" style="query" type="xs:string"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/getNumberOfSleepRecordsForAccount"><method name="GET"><request><param name="key" style="query" type="xs:string"/><param name="email" style="query" type="xs:string"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/getOverallAverageDayFeelScore"><method name="GET"><request><param name="key" style="query" type="xs:string"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/getOverallAverageMorningFeelScore"><method name="GET"><request><param name="key" style="query" type="xs:string"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/getOverallAverageSleepStealerScore"><method name="GET"><request><param name="key" style="query" type="xs:string"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/getOverallAverageZQScore"><method name="GET"><request><param name="key" style="query" type="xs:string"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/getPreviousSleepRecord"><method name="GET"><request><param name="key" style="query" type="xs:string"/><param name="date" style="query" type="xs:string"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/getPreviousSleepStats"><method name="GET"><request><param name="key" style="query" type="xs:string"/><param name="date" style="query" type="xs:string"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/getSleepAndJournalDataByCount"><method name="GET"><request><param name="key" style="query" type="xs:string"/><param name="dateFrom" style="query" type="xs:string"/><param name="count" style="query" type="xs:int"/><param name="timeDirection" style="query" type="xs:string"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/getSleepAndJournalDataByDateRange"><method name="GET"><request><param name="key" style="query" type="xs:string"/><param name="dateFrom" style="query" type="xs:string"/><param name="dateTo" style="query" type="xs:string"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/getSleepRecordForDate"><method name="GET"><request><param name="key" style="query" type="xs:string"/><param name="date" style="query" type="xs:string"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/getSleepRecordsByCount"><method name="GET"><request><param name="key" style="query" type="xs:string"/><param name="dateFrom" style="query" type="xs:string"/><param name="count" style="query" type="xs:int"/><param name="timeDirection" style="query" type="xs:string"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/getSleepRecordsByDateRange"><method name="GET"><request><param name="key" style="query" type="xs:string"/><param name="dateFrom" style="query" type="xs:string"/><param name="dateTo" style="query" type="xs:string"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/getSleepStatsByCount"><method name="GET"><request><param name="key" style="query" type="xs:string"/><param name="dateFrom" style="query" type="xs:string"/><param name="count" style="query" type="xs:int"/><param name="timeDirection" style="query" type="xs:string"/><param name="groupType" style="query" type="xs:string"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/getSleepStatsByDateRange"><method name="GET"><request><param name="key" style="query" type="xs:string"/><param name="dateFrom" style="query" type="xs:string"/><param name="dateTo" style="query" type="xs:string"/><param name="groupType" style="query" type="xs:string"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/getSleepStatsForDate"><method name="GET"><request><param name="key" style="query" type="xs:string"/><param name="date" style="query" type="xs:string"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/getUpdatedSleepRecordsForMobile"><method name="GET"><request><param name="key" style="query" type="xs:string"/><param name="date" style="query" type="xs:long"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/getUpdatedSleepRecordsSinceDate"><method name="GET"><request><param name="key" style="query" type="xs:string"/><param name="date" style="query" type="xs:string"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/helloWorld"><method name="GET"><request><param name="key" style="query" type="xs:string"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/isEmailRegistered"><method name="GET"><request><param name="key" style="query" type="xs:string"/><param name="email" style="query" type="xs:string"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/logout"><method name="GET"><response status="204"></response></method></resource><resource path="/startInteractiveUploadHttp"><method name="POST"><request><param name="key" style="query" type="xs:string"/><representation mediaType="multipart/form-data"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/subscribeToNotify"><method name="GET"><request><param name="key" style="query" type="xs:string"/><param name="userid" style="query" type="xs:string"/><param name="callback" style="query" type="xs:string"/><param name="redir" style="query" type="xs:string"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/unsubscribeFromNotify"><method name="GET"><request><param name="key" style="query" type="xs:string"/><param name="userid" style="query" type="xs:string"/></request><response><representation mediaType="application/json"/></response></method></resource><resource path="/uploadDatFile"><method name="POST"><request><representation mediaType="multipart/form-data"/></request><response><representation mediaType="text/xml"/><representation mediaType="application/xml"/><representation mediaType="application/json"/></response></method></resource></resource></resources></application>

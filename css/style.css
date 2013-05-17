@@ -1,0 +1,352 @@
+
+/* 
+----------------------------------------------------------------------------------------
+
+Copyright 2010 - Thierry Ruiz - www.dotemplate.com - All rights reserved.
+
+THIS TEMPLATE IS FREE AS LONG AS YOU KEEP THE LINK TO WWW.DOTEMPLATE.COM IN THE FOOTER
+TO REMOVE THE LINK, PLEASE MAKE A 10 DOLLARS DONATION at www.dotemplate.com/#donate
+
+----------------------------------------------------------------------------------------
+*/
+
+
+html {
+	background: #d2d2d2;
+	margin:0 0 0 -1px;
+	padding:0;	
+	overflow-Y: scroll;
+}
+
+
+body {
+	padding:0;
+	margin :0;
+	display:table; 
+	width:100%;	
+}
+
+
+					body {
+	color:#606060;
+	font-family: 'Trebuchet MS', sans-serif;
+	font-size: 13px;
+	font-style: normal;
+	font-weight: normal;
+	text-transform: normal;
+}
+
+p {
+	letter-spacing: normal;
+	line-height: 1.7em;
+}
+
+h1 {
+	color:#505050;
+	font-size:22px;
+	margin:25px 0 10px 0;
+	clear:both;
+}
+
+
+h2 {
+	color:#505050;
+	font-size:20px;
+	margin:20px 0 10px 0;
+	clear:both;
+}
+
+
+h3 {
+	color:#505050;
+	font-size:18px;
+	margin:20px 0 5px 0;
+	clear:both;
+}
+
+
+
+a:link, a:visited {
+	color:#2ca4f9;
+	text-decoration:none;
+}
+
+
+a:hover {
+	color:#b7070d;
+	text-decoration:underline;
+}
+	
+					
+#wrapper {
+	background: transparent url( ../img/css/page-vbg.jpg ) repeat-y scroll 50% 0px;
+	margin:0 auto ;
+	width:100%;
+}
+
+					body {
+	background-color:#d2d2d2;
+}
+
+#wrapper {
+	border-top: 1px solid #ffffff;
+}
+	
+
+					
+#topWrapper {
+	width:100%;
+	height:240px;
+	background-color:${topWrapper.bg.color};
+	background-image:url(../img/css/topWrapper-bg.jpg);
+	background-position:center top ;
+	background-repeat:repeat-x;
+}
+
+
+					
+#topBanner {
+	width:960px;
+	margin:0 auto;
+	height:240px;
+	background-image:url(../img/css/topBanner.jpg);
+	background-repeat:no-repeat;
+}
+
+	
+
+#topnav {
+	background:transparent url('../img/css/hmenu.jpg') repeat-x top left;
+}
+
+
+					
+
+#topnav {
+	height:40px;
+	margin:0 auto ;
+	text-align:center;
+}
+
+#topnav ul {
+	display:table;
+	margin:0 auto;
+	padding:0;
+	list-style-type:none;
+	position:relative;
+	height:40px;
+	text-transform:uppercase;
+	font-size:12px;
+	font-family:Arial,sans-serif;
+}
+
+
+#topnav ul li {
+	display:block;
+	float:left;
+	margin:0;
+	padding:0;
+	background:transparent url('../img/css/hmenu.jpg') repeat-x top left;
+
+}
+
+
+#topnav ul li a {
+	display:block;
+	float:left;
+	color:#ffffff;
+	text-decoration:none;
+	padding:0px 50px ;
+	line-height:40px;
+	font-weight:bold;
+}
+
+
+#topnav ul li a:hover, #topnav li#current a {
+	color:#FFFFFF;
+	background:transparent url('../img/css/hmenu-sel.jpg') repeat-x top left;
+}
+
+	
+
+#topnav ul {
+	width:960px;
+}
+
+
+
+
+body {
+	background-position : center 280px;
+}
+
+	
+
+#bg {
+	margin:0 auto;
+	padding:0;
+	background:transparent ;
+	background-image:url(../img/css/hat.jpg);
+ 	background-repeat:no-repeat;	
+	background-position: center top ;
+}
+
+
+
+					#header {
+	margin: 0 auto;
+	min-height:30px;
+	height: 30px;
+	width: 960px;
+}
+	
+
+#page {
+	background: transparent url( ../img/css/page-bg.jpg ) no-repeat center top;
+}
+
+
+					
+
+
+#container {
+	margin:0 auto;
+	width:960px;
+}
+
+
+#content {
+	width:940px;
+	margin:0 auto ;
+	text-align:left;
+	min-height:800px;
+}
+
+
+#content p {
+	text-align:justify;
+}
+
+	
+
+
+
+#footerWrapper {
+	margin:0 auto;
+	height:180px;
+	padding:0;
+	background:transparent url( ../img/css/footerWrapper-bg.jpg ) no-repeat scroll center top;
+}
+
+
+#footer {
+	margin:0 auto;
+	padding:0;
+	width:960px;
+	height:100px;
+}
+
+
+					#footer {
+	color:#CCCCCC;
+	text-align:center;
+}
+
+#footer a:link, #footer a:visited {
+	color:#EEEEEE;
+}
+
+
+#footer a:hover{
+	color:#FFFFFF;
+	text-decoration:none;
+}
+
+	
+	
+					
+#right {
+	width:200px;
+	padding:10px 20px 20px 20px;
+	float:left;
+}
+
+
+#center {
+	width:660px;
+	padding:10px 20px 20px 20px;
+	float:left;
+}
+
+ 
+#content p {
+	margin-top:10px;
+	text-align:justify;
+}
+
+
+										
+#sidebar ul.vmenu {
+	list-style: none;
+	text-align: left;
+	margin: 7px 0px 8px 0px; 
+	padding: 0;
+	text-decoration: none;	
+	border-top: 1px solid #eeeeee;
+}
+
+
+#sidebar ul.vmenu li {
+	list-style: none;
+	padding: 4px 0 4px 0px;
+	margin: 0 2px;	
+	border-bottom: 1px solid #eeeeee;
+}
+
+
+
+#sidebar ul.vmenu li a {
+	text-decoration: none;
+	color:#9B251B;
+}
+
+
+#sidebar ul.vmenu li a:hover {
+	color:#d8d8f0;
+}
+
+
+#sidebar ul.vmenu ul { margin: 0 0 0 5px; padding: 0; }
+#sidebar ul.vmenu ul li { border: none; }
+
+
+			
+
+
+a img {
+	border:none;
+} 
+
+
+.clear {
+	clear: both;
+	display: block;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+
+label.valid {
+  width: 24px;
+  height: 24px;
+  background: url(assets/img/valid.png) center center no-repeat;
+  display: inline-block;
+  text-indent: -9999px;
+}
+label.error {
+  font-weight: bold;
+  color: red;
+  padding: 2px 8px;
+  margin-top: 2px;
+}
